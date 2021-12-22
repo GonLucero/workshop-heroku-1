@@ -96,16 +96,36 @@ export const ordenAsc = (type) => (dispatch, getState) => {
   }
 
 //23)
-  export function buscarVideojuegos(name) { // pongo nombre en vez de payload, nombre es lo que el usuario escriba en la barra de busqueda
-    return (dispatch) =>
-      fetch(`/videogames?name=${name}`) // le paso lo que me llega x payload
-        .then((resp) => resp.json())
-        .then((json) => {
-          dispatch({
-            type: "BUSCAR_VIDEOJUEGOS",
-            payload: json, // json es lo que me devuelve la ruta, una vez que se le asigna el nombre
-          });
+  // export function buscarVideojuegos(name) { // pongo nombre en vez de payload, nombre es lo que el usuario escriba en la barra de busqueda
+  //   return (dispatch) =>
+  //     fetch(`/videogames?name=${name}`) // le paso lo que me llega x payload
+  //       .then((resp) => resp.json())
+  //       .then((json) => {
+  //         dispatch({
+  //           type: "BUSCAR_VIDEOJUEGOS",
+  //           payload: json, // json es lo que me devuelve la ruta, una vez que se le asigna el nombre
+  //         });
+  //       });
+  // }
+
+  export function buscarVideojuegos(name) {
+    return async function (dispatch) {
+      try {
+        var json = await axios(
+          `/videogames?name=${name}`
+        );
+       dispatch({
+          
+          type: "BUSCAR_VIDEOJUEGOS",
+          payload: json.data,
         });
+      
+  
+      } catch (error) {
+        console.log(error);
+  
+      }
+    };
   }
 
   // export function buscarVideojuegos(name) {
@@ -135,17 +155,32 @@ export function crearVideojuego(obj){
 
 
   //30)
+  // export function getVideojuegoXId(id) {
+  //   console.log(id)
+  //   return (dispatch) =>
+  //     fetch(`/videogame/${id}`)
+  //       .then((resp) => resp.json())
+  //       .then((json) => {
+  //         dispatch({
+  //           type: "GET_VIDEOJUEGO_X_ID",
+  //           payload: json,
+  //         });
+  //       });
+  // }
+
   export function getVideojuegoXId(id) {
-    console.log(id)
-    return (dispatch) =>
-      fetch(`/videogame/${id}`)
-        .then((resp) => resp.json())
-        .then((json) => {
-          dispatch({
-            type: "GET_VIDEOJUEGO_X_ID",
-            payload: json,
-          });
+    return async function (dispatch) {
+      try {
+        var json = await axios(`/videogame/${id}`);
+        dispatch({
+          type: "GET_VIDEOJUEGO_X_ID",
+          payload: json.data,
         });
+      } catch (error) {
+        console.log(error);
+        alert("Error obteniendo datos del videojuego", error);
+      }
+    };
   }
 
   // acá recibo el genero seleccionado
@@ -178,16 +213,30 @@ export function crearVideojuego(obj){
 };
 
 // acción que me trae todos los generos
+// export function getGeneros() {
+//   return (dispatch) =>
+//     fetch(`/genres`)
+//       .then((resp) => resp.json())
+//       .then((json) => {
+//         dispatch({
+//           type: "GET_GENEROS",
+//           payload: json,
+//         });
+//       });
+// }
+
 export function getGeneros() {
-  return (dispatch) =>
-    fetch(`/genres`)
-      .then((resp) => resp.json())
-      .then((json) => {
-        dispatch({
-          type: "GET_GENEROS",
-          payload: json,
-        });
+  return async function (dispatch) {
+    try {
+      var json = await axios(`/genres`);
+      dispatch({
+        type: "GET_GENEROS",
+        payload: json.data,
       });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
   // export function crearVideojuego(obj) { // el payload es lo que me llega desde el front
