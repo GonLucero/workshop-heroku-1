@@ -30,7 +30,7 @@ let sequelize =
     //     },
     //     ssl: true,
     //   })
-    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dfaupq847g3935`,{
+    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/d2nb921n2dd8v9`,{
       dialectOptions: {
         ssl: {
           require: true,
