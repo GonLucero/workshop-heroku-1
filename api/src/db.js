@@ -3,7 +3,8 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
+} = process.env;
 //ACÁ ESTA TODA LA CONFIGURACIÓN DE LA DB
 let sequelize =
   process.env.NODE_ENV === "production"?
@@ -29,7 +30,7 @@ let sequelize =
     //     },
     //     ssl: true,
     //   })
-    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ejmhibdimgcogg`,{
+    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dfaupq847g3935`,{
       dialectOptions: {
         ssl: {
           require: true,

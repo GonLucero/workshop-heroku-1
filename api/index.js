@@ -19,11 +19,11 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-require('dotenv').config();
+
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => { // el force en true, resetea la base de datos todo el tiempo
-  server.listen(process.env.PORT, () => {
+conn.sync({ force: true }).then(() => { // el force en true, resetea la base de datos todo el tiempo
+  server.listen(process.env.PORT || 3000, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
