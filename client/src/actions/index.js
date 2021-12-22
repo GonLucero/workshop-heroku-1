@@ -17,7 +17,7 @@ import axios from 'axios';
 export function getVideojuegos(){
   return async function(dispatch){
     try{
-      var json = await axios.get("/videogames")
+      var json = await axios.get("https://soyhenry-workshop-heroku-api.herokuapp.com/videogames")
       return dispatch({
         type:  "GET_VIDEOJUEGOS",
         payload: json.data
