@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { Router } = require('express');
 const axios = require('axios');// tengo que instalar la dependencia axios--> npm install axios en /api
 //importo en el back--> axios
