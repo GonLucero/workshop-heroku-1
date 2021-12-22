@@ -112,7 +112,7 @@ export const ordenAsc = (type) => (dispatch, getState) => {
     return async function (dispatch) {
       try {
         var json = await axios(
-          `/videogames?name=${name}`
+          `https://soyhenry-workshop-heroku-api.herokuapp.com/videogames?name=${name}`
         );
        dispatch({
           
@@ -148,7 +148,7 @@ export const ordenAsc = (type) => (dispatch, getState) => {
 
 export function crearVideojuego(obj){
   return async function(dispatch){
-    const response = await axios.post("/videogame",obj);
+    const response = await axios.post("https://soyhenry-workshop-heroku-api.herokuapp.com/videogame",obj);
     return response
   }
 }
@@ -171,7 +171,7 @@ export function crearVideojuego(obj){
   export function getVideojuegoXId(id) {
     return async function (dispatch) {
       try {
-        var json = await axios(`/videogame/${id}`);
+        var json = await axios(`https://soyhenry-workshop-heroku-api.herokuapp.com/videogame/${id}`);
         dispatch({
           type: "GET_VIDEOJUEGO_X_ID",
           payload: json.data,
@@ -228,7 +228,7 @@ export function crearVideojuego(obj){
 export function getGeneros() {
   return async function (dispatch) {
     try {
-      var json = await axios(`/genres`);
+      var json = await axios(`https://soyhenry-workshop-heroku-api.herokuapp.com/genres`);
       dispatch({
         type: "GET_GENEROS",
         payload: json.data,
