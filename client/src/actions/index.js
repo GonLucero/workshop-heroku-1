@@ -1,7 +1,7 @@
 // ACA hago la conexion entre el front y el back
 import axios from 'axios';
 
-// 12)
+// 12) hola
 // el componente Principal: va a hacer un get para todos los videojuegos:
 
 // export function getVideojuegos() {
